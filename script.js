@@ -181,7 +181,7 @@ function initCountdown() {
 	const now = new Date().getTime();
 	const distance = NEW_YEAR_2026 - now;
 	
-	// Nếu đã qua năm mới, bỏ qua countdown
+	// Nếu đã qua năm mới, tự động trigger celebration
 	if (distance < 0) {
 		const countdownOverlay = document.getElementById('countdownOverlay');
 		if (countdownOverlay) {
@@ -192,6 +192,13 @@ function initCountdown() {
 		if (stageContainer) {
 			stageContainer.classList.remove('remove');
 		}
+		
+		// QUAN TRỌNG: Trigger celebration ngay cả khi đã qua năm mới
+		// Điều này đảm bảo người vào web sau vẫn được chào đón
+		setTimeout(() => {
+			triggerNewYearCelebration();
+		}, 500);
+		
 		return;
 	}
 	
