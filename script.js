@@ -1075,7 +1075,7 @@ function init() {
 	}
 	// shell size
 	if (appNodes.shellSize) {
-		options = '';
+		let options = '';
 		['3"', '4"', '6"', '8"', '12"', '16"'].forEach((opt, i) => options += `<option value="${i}">${opt}</option>`);
 		appNodes.shellSize.innerHTML = options;
 	}
