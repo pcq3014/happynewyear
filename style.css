@@ -15,7 +15,7 @@
   body {
     overflow: hidden;
     color: rgba(255, 255, 255, 0.5);
-    font-family: "Russo One", arial, sans-serif;
+    font-family: "Roboto", "Noto Sans", "Segoe UI", arial, sans-serif;
     line-height: 1.25;
     letter-spacing: 0.06em;
   }
@@ -93,7 +93,8 @@
   border: none;
   padding: 20px 60px;
   font-size: 1.5em;
-  font-family: 'Russo One', arial, sans-serif;
+  font-family: 'Roboto', 'Noto Sans', 'Segoe UI', arial, sans-serif;
+  font-weight: 700;
   color: #fff;
   border-radius: 50px;
   cursor: pointer;
@@ -135,6 +136,7 @@
 @media (max-width: 768px) {
   .welcome-title {
     font-size: 2em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   }
   .welcome-text {
     font-size: 1em;
@@ -290,7 +292,7 @@
     width: 50%;
     height: 30px;
     font-size: 1rem;
-    font-family: "Russo One", arial, sans-serif;
+    font-family: "Roboto", "Noto Sans", arial, sans-serif;
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.06em;
     background-color: transparent;
@@ -450,7 +452,7 @@
     border-radius: 2px;
     padding: 0.25em 0.75em;
     margin-top: 0.36em;
-    font-family: "Russo One", arial, sans-serif;
+    font-family: "Roboto", "Noto Sans", arial, sans-serif;
     font-size: 1em;
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;      
@@ -660,6 +662,8 @@
     .countdown-title {
       font-size: 2rem;
       margin-bottom: 2rem;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+                   0 0 20px rgba(147, 112, 219, 0.2);
     }
 
     .countdown-timer {
@@ -672,6 +676,8 @@
 
     .time-value {
       font-size: 2.5rem;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5),
+                   0 0 10px rgba(255, 215, 0, 0.3);
     }
 
     .time-label {
@@ -684,13 +690,17 @@
 
     .message-title {
       font-size: 2rem;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5),
+                   0 0 20px rgba(255, 215, 0, 0.3);
     }
 
     .message-text {
       font-size: 1.2rem;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     .message-subtitle {
       font-size: 1rem;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
   }
