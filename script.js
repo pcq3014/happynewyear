@@ -176,35 +176,61 @@ function startFinaleSequence() {
 	}, 1000);
 }
 
+// Xử lý nút bắt đầu
+function setupStartButton() {
+	const startButton = document.getElementById('startButton');
+	const welcomeOverlay = document.getElementById('welcomeOverlay');
+	
+	if (startButton && welcomeOverlay) {
+		startButton.addEventListener('click', () => {
+			// Ẩn welcome overlay
+			welcomeOverlay.style.transition = 'opacity 0.5s ease';
+			welcomeOverlay.style.opacity = '0';
+			
+			setTimeout(() => {
+				welcomeOverlay.style.display = 'none';
+				
+				// Kiểm tra xem đã qua năm mới chưa
+				const now = new Date().getTime();
+				const distance = NEW_YEAR_2026 - now;
+				
+				if (distance < 0) {
+					// Đã qua năm mới - trigger celebration ngay
+					const countdownOverlay = document.getElementById('countdownOverlay');
+					if (countdownOverlay) {
+						countdownOverlay.style.display = 'none';
+					}
+					
+					const stageContainer = document.querySelector('.stage-container');
+					if (stageContainer) {
+						stageContainer.classList.remove('remove');
+					}
+					
+					// Trigger celebration với nhạc
+					setTimeout(() => {
+						triggerNewYearCelebration();
+					}, 300);
+				} else {
+					// Chưa đến năm mới - hiển thị countdown
+					const countdownOverlay = document.getElementById('countdownOverlay');
+					if (countdownOverlay) {
+						countdownOverlay.classList.remove('hide');
+					}
+					
+					// Bắt đầu countdown
+					updateCountdown();
+					countdownInterval = setInterval(updateCountdown, 1000);
+				}
+			}, 500);
+		});
+	}
+}
+
 // Khởi động countdown khi trang load
 function initCountdown() {
-	const now = new Date().getTime();
-	const distance = NEW_YEAR_2026 - now;
-	
-	// Nếu đã qua năm mới, tự động trigger celebration
-	if (distance < 0) {
-		const countdownOverlay = document.getElementById('countdownOverlay');
-		if (countdownOverlay) {
-			countdownOverlay.style.display = 'none';
-		}
-		// Vẫn hiển thị stage để có thể chơi pháo hoa thủ công
-		const stageContainer = document.querySelector('.stage-container');
-		if (stageContainer) {
-			stageContainer.classList.remove('remove');
-		}
-		
-		// QUAN TRỌNG: Trigger celebration ngay cả khi đã qua năm mới
-		// Điều này đảm bảo người vào web sau vẫn được chào đón
-		setTimeout(() => {
-			triggerNewYearCelebration();
-		}, 500);
-		
-		return;
-	}
-	
-	// Cập nhật countdown mỗi giây
-	updateCountdown();
-	countdownInterval = setInterval(updateCountdown, 1000);
+	// Chỉ setup nút bắt đầu, không tự động trigger gì cả
+	// Mọi thứ sẽ bắt đầu sau khi user click nút
+	setupStartButton();
 }
 
 // Chờ DOM load xong rồi khởi động
