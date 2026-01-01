@@ -2742,21 +2742,19 @@ function showWishText(x, y) {
 		top: ${y * 100}%;
 		transform: translate(-50%, -50%);
 		color: #FFD700;
-		font-family: 'Russo One', Arial, sans-serif;
-		font-size: ${IS_MOBILE ? '1rem' : '2rem'};
-		font-weight: bold;
+		font-family: 'Roboto', 'Noto Sans', 'Segoe UI', Arial, sans-serif;
+		font-size: ${IS_MOBILE ? '0.9rem' : '1.8rem'};
+		font-weight: 700;
 		text-shadow: 
-			0 0 10px rgba(255, 215, 0, 1),
-			0 0 20px rgba(255, 215, 0, 0.8),
-			0 0 30px rgba(255, 215, 0, 0.6),
-			0 0 40px rgba(255, 140, 0, 0.4),
-			3px 3px 6px rgba(0, 0, 0, 0.9);
+			${IS_MOBILE ? '0 0 5px rgba(255, 215, 0, 0.6)' : '0 0 8px rgba(255, 215, 0, 0.7)'},
+			${IS_MOBILE ? '0 0 10px rgba(255, 215, 0, 0.4)' : '0 0 15px rgba(255, 215, 0, 0.5)'},
+			${IS_MOBILE ? '2px 2px 4px rgba(0, 0, 0, 0.8)' : '3px 3px 6px rgba(0, 0, 0, 0.9)'};
 		white-space: nowrap;
 		opacity: 0;
 		animation: wishFadeInOut 2.5s ease-in-out forwards;
 		pointer-events: none;
 		text-align: center;
-		letter-spacing: 1px;
+		letter-spacing: ${IS_MOBILE ? '0.5px' : '1px'};
 		z-index: 9999;
 	`;
 	
