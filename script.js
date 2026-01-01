@@ -22,7 +22,7 @@ function loadCelebrationMusic() {
 	
 	// Set thời điểm bắt đầu khi nhạc đã load
 	newYearAudio.addEventListener('loadedmetadata', () => {
-		newYearAudio.currentTime = 10; // Bắt đầu từ giây 14
+		newYearAudio.currentTime = 13.5; // Bắt đầu từ giây 14
 	}, { once: true });
 }
 
@@ -117,7 +117,7 @@ function triggerNewYearCelebration() {
 			try {
 				// Đảm bảo bắt đầu từ giây 14
 				if (newYearAudio.readyState >= 2) {
-					newYearAudio.currentTime = 14;
+					newYearAudio.currentTime = 13.5;
 				}
 				const playPromise = newYearAudio.play();
 				if (playPromise !== undefined) {
@@ -183,7 +183,11 @@ function setupStartButton() {
 	
 	if (startButton && welcomeOverlay) {
 		startButton.addEventListener('click', () => {
-			// Bật nhạc ngay khi click
+			// Khởi tạo và bật nhạc ngay lập tức
+			soundManager.initAudioContext();
+			if (soundManager.ctx && soundManager.ctx.state === 'suspended') {
+				soundManager.ctx.resume();
+			}
 			toggleSound(true);
 			
 			// Ẩn welcome overlay
