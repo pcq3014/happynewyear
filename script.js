@@ -183,6 +183,9 @@ function setupStartButton() {
 	
 	if (startButton && welcomeOverlay) {
 		startButton.addEventListener('click', () => {
+			// Bật nhạc ngay khi click
+			toggleSound(true);
+			
 			// Ẩn welcome overlay
 			welcomeOverlay.style.transition = 'opacity 0.5s ease';
 			welcomeOverlay.style.opacity = '0';
